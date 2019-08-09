@@ -1,0 +1,240 @@
+{%  load staticfiles %}
+
+<!DOCTYPE HTML5>
+
+
+
+<!--
+	Big Picture by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			
+		<title>삶담소</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{%static 'assets/css/main.css'%}?v=1.0" />
+		<noscript><link rel="stylesheet" href="{%static 'assets/css/noscript.'%}?v=1.0" /></noscript>
+		<link rel="stylesheet" href="{% static 'assets/css/index.css' %}?v=1.0" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|East+Sea+Dokdo|Gugi|Nanum+Pen+Script|Song+Myung&display=swap&subset=korean');
+		.main_letter_top{
+		font-family: 'Song Myung', 'serif', 'cursive';
+		letter-spacing: 10px;
+		font-size: 1em;
+		}
+		.main_letter_bottom{
+			font-family: 'Gugi', cursive;
+			letter-spacing: 10px;
+			font-size: 6em;
+		}
+		
+		</style>
+
+	</head>
+	
+	<body class="is-preload">
+	
+
+		<!-- Header -->
+			<header id="header" style="font-family: 'Gugi', cursive; ">
+				<h3>삶 담 소</h3>
+				<nav>
+					<ul>
+						<li><a href="#intro">가장 위로</a></li>
+						<li><a href="#one">나의 팀</a></li>
+						<li><a href="#two">오늘의 질문</a></li>
+						{% if user.is_authenticated %}
+						<li>
+									<a data-toggle="modal" data-target="#exampleModalLong" style="cursor:pointer">환영합니다 {{ user.username }}씨!</a>
+										<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+											<div class="modal-dialog" role="document">
+											  <div class="modal-content">
+												<div class="modal-header">
+												  <h5 class="modal-title" id="exampleModalLongTitle">계정 정보</h5>
+												  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												  </button>
+												</div>
+												<div class="modal-body">
+														<div class="contaner">
+															
+															<div class="modal-body">
+																<div class="container">
+																
+																			Username: {{user.username}}
+																			<br>
+																			Email address: {{user.email}}
+																			<br>
+																			Team: {{user.profile.team}}
+																			<br>
+										
+																		
+																</div>
+															</div>
+														</div>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-primary"><a href="{%url 'change_pw'%}">비밀번호 변경</a></button>
+												 	<button type="button" class="btn btn-primary"><a href="{%url 'update'%}">회원 정보 수정</a></button>
+												</div>
+											  </div>
+											</div>
+										</div>
+						</li>
+						{% endif %}
+						<li><a href="#contact">가장 아래로</a></li>
+						<li><a href = "{% url 'logout' %}">로그아웃</a></li>
+					</ul>
+				</nav>
+			</header>
+
+
+		<!-- Intro -->
+			<section id="intro" class="main style1 dark fullscreen">
+				<div class="content">
+					<header>
+						<h5 class="main_letter_top">우리는 어떤 삶을 살고 있나요?</h5>
+						<h2 class="main_letter_bottom">삶담소</h2>
+					</header>
+					<h3> </h3>
+					<p></p>
+					<footer>
+						<a href="#one" class="button style2 down">More</a>
+					</footer>
+				</div>
+			</section>
+
+		<!-- One -->
+			<section id="one" class="main style2 right dark fullscreen" style="font-family: 'Do Hyeon', sans-serif; font-size:1em;">
+				<div class="content box style2">
+					{% if user.is_authenticated %}
+					<form method = "POST" action="{%url 'team_in'%}">
+							{% csrf_token %}
+					{% if user.profile.teamcheck == False %}
+					<p>그룹이 없으시네요! 만들어 볼까요?</p>
+					<br>
+					<a href="{% url 'maketeam' %}" id="makegroup">그룹 만들기</a>
+					<br>
+					<p>초대받은 그룹이 있나요?</p>
+					<br>
+					<p>초대 코드:</p>
+					<br>
+					<input type='text' name='invitecode'>
+					<!--<input type='submit' value='전송'> -->
+					<button type="submit">전송</button>
+				</form>
+					{% else %}
+					
+					<h2>{{user.profile.team}}팀</h2>
+					<br>
+					<p>팀원 명단:</p>
+					<tr>{{teamlist}}</tr>
+					
+					{% endif %}
+					
+					{% endif %}
+				</div>
+				<a href="#two" class="button style2 down anchored">Next</a>
+			</section>
+
+		<!-- Two -->
+		<section id="two" class="main style2 left dark fullscreen" style="font-family: 'Nanum Pen Script', cursive;">
+				<div class="content box style2">
+					<header>
+						
+						<form method = "POST" action = "{% url 'answer'%}">
+								{% csrf_token %}
+						<textarea style="display: none"  name="question">{{ first }}</textarea>
+						<h3 style="font-family: 'Do Hyeon', sans-serif; font-size:2em;">오늘의 질문 :</h3><h2> " {{ first }} "</h2>
+						<br>
+						<h2><textarea rows = "5" name = "fulltext" style="width:100%;"></textarea>
+							<br>
+							
+						<input type = "submit" value = "답변하기" onclick="alert('답변을 보냈어요!');"
+								style="width:150; font-family: 'Do Hyeon', sans-serif; background-color:#FFBE04; border:#FFBE04" class="btn btn-primary btn-xl rounded-pill mt-5" >
+						<button type="button" class="btn btn-primary btn-xl rounded-pill mt-5" data-toggle="modal" data-target="#exampleModalScrollable_3" style="width:150; font-family: 'Do Hyeon', sans-serif; background-color:#FFBE04; border:#FFBE04">
+									내 답변
+								  </button></h2>
+						</form>
+					</header>
+				</div>
+			</section>
+
+
+
+
+<!-- Modal -->
+<section id="memberinfo">
+	<div class="content">
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+		  	<div class="modal-content">
+				<div class="modal-header">
+			  	<h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+			  	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+			  	</button>
+				</div>
+				<div class="modal-body">
+			  ...
+				</div>
+				<div class="modal-footer">
+			  	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  	<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+		  	</div>
+			</div>
+	  		</div>
+		</div> 
+</section>
+
+
+		<!-- Scripts -->
+			<script src="{%static 'assets/js/jquery.min.js'%}?v=1.0"></script>
+			<script src="{%static 'assets/js/jquery.poptrox.min.js'%}?v=1.0"></script>
+			<script src="{%static 'assets/js/jquery.scrolly.min.js'%}?v=1.0"></script>
+			<script src="{%static 'assets/js/jquery.scrollex.min.js'%}?v=1.0"></script>
+			<script src="{%static 'assets/js/browser.min.js'%}?v=1.0"></script>
+			<script src="{%static 'assets/js/breakpoints.min.js'%}?v=1.0"></script>
+			<script src="{%static 'assets/js/util.js'%}?v=1.0"></script>
+			<script src="{%static 'assets/js/main.js'%}?v=1.0"></script>
+
+	<div class="modal fade" id="exampleModalScrollable_3" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrollable" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalScrollableTitle">지난 내 답변</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+	
+			<div class="modal-body">
+				<div>	
+				{% if user.is_authenticated %}
+
+					{%for myanswer in myanswer.all%}
+					질문 : {{myanswer.question}}<br>
+					답변 : {{myanswer.answerlist}}<br>
+					<br>
+					{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+			<div class="modal-footer">
+			  <button type="submit" class="btn btn-secondary">로그인</button>
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button> 
+
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<h1>질문 추가하기</h1>
+
+<br>
+<div class="container">
+	<form action="{% url 'create' %}">
+	  <h4>질문: </h4>
+	  <textarea cols=40 rows=10 name="title"></textarea>
+	  <br>
+	  <br>
+	  <input class="btn btn-dark" type="submit" value="제출하기">
+  </form>
+  
+</div>
+
+
+<div class="container">
+		{% for questions in questions.all %}
+		<h1>{{ questions.title }}</h1>
+		{% endfor %}
+	</div>
+

@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|East+Sea+Dokdo|Gugi|Nanum+Pen+Script|Song+Myung&display=swap&subset=korean');
+@import url('https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean');
+/*모바일 */
+
+.modal-body .modal-footer{
+  font-family: serif;
+}
+.modal-content{
+  background-image: url("{% static 'assets\images\back_7.jpg'%}")
+}
+
+@media screen and (max-width : 767px) {
+  body{
+  height: 100%;
+  width:100%;
+  font-family: 'Jua', sans-serif;
+  letter-spacing: 2px; 
+  z-index: 5;
+  text-align: center;
+  background-color: black;
+  color: black;
+  }
+  button{
+    width: 50px;
+    height: 25px;
+  }
+
+  .Backgruoung-Img-div{
+    position: fixed; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;
+    z-index: -1;
+  }
+
+  .Backgruoung-Img{
+  z-index: -2;
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+  border-radius: 10px;
+  }
+
+  .HeadName{
+    font-size: 35px;
+  }
+  li{
+  float: left;
+  list-style: none;
+  padding: 4px 8px;
+  font-size: 40px;
+  color: black;
+  size: 50%
+  }
+  button{
+  width: 70px;
+  height: 30px;
+  }
+  U{
+    font-size: 14px;
+    }
+}
+
+
+/*테블릿 장치*/
+@media screen and (min-width : 768px) and (max-width : 991px) {
+  body{
+  height: 100%;
+  width:100%;
+  font-family: '', cursive, sans-serif;
+  letter-spacing: 2px; 
+  z-index: 2;
+  text-align: center;
+  background-color: black;
+  color: black;
+  }
+  /* 증간 크기 화면에서는 스크롤에 따라 로그인 폼이 따라오게 설정*/
+  .Backgruoung-Img-div{
+    position: fixed; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;
+    z-index: -1;
+    
+  }
+  .Backgruoung-Img{
+  z-index: -2;
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+  border-radius: 10px;
+  }
+  .HeadName{
+    font-size: 45px;
+  }
+  li{
+  float: left;
+  list-style: none;
+  padding: 8px 16px;
+  font-size: 50px;
+  color: black;
+  }
+  a{
+  font-size: 130%
+  }
+  U{
+  font-size: 17px;
+  }
+}
+
+
+/* 데스크탑장치 */
+@media screen and (min-width : 992px) {
+body{
+  height: 100%;
+  width:100%;
+  font-family: 'Jua', sans-serif;  
+  letter-spacing: 2px; 
+  z-index: 2;
+  text-align: center;
+  background-color: black;
+  color: black;
+  }
+
+  .Backgruoung-Img-div{
+    position: fixed; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;
+    z-index: -1;
+  }
+  .Backgruoung-Img{
+  z-index: -2;
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+  border-radius: 10px;
+  }
+  .HeadName{
+    font-size: 50px;
+  }
+}
+li{
+  float: left;
+  list-style: none;
+  padding: 10px 20px;
+  font-size: 50px;
+  color: black;
+}
+nav{
+  z-index: 0;
+}
+a{
+  font-size: 140%
+}
+button{
+  width: 150px;
+  height: 80px;
+}
+U{
+  font-size: 20px;
+  color: white;
+}
+
+.box1 { text-align: center; 
+  z-index: 0;
+
+}
+.center { 
+text-align: center; 
+z-index: 0; 
+margin:0 auto;
+width: 350px;
+background-color: gray;
+border-top-left-radius:2em;
+border-top-right-radius:2em;
+border-bottom-right-radius:2em;
+border-bottom-left-radius:2em;
+
+}
+#change_pw_head{
+  font-size:50px;
+
+}

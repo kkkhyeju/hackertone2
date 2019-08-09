@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|East+Sea+Dokdo|Gugi|Nanum+Pen+Script|Song+Myung&display=swap&subset=korean');
+body{
+    background-color: black;
+}
+#header{
+    background-color:#3e91b5;
+    
+    float: left;
+    list-style: none;
+    padding: 8px 8px;
+    color: white;
+}
+#header_name{
+    font-size: 30px;
+}
+
+.main_letter_top{
+font-family: 'Song Myung', 'serif', 'cursive';
+letter-spacing: 10px;
+font-size: 40px;
+
+}
+.main_letter_bottom{
+    font-family: 'Gugi', cursive;
+    letter-spacing: 10px;
+    font-size: 150px;
+}
+#makegroup{
+    font-size: 25px;
+    color: darkblue;
+}

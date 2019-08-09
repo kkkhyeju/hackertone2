@@ -1,0 +1,135 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
+        <link rel="stylesheet" href="{%static 'assets/css/login.css'%}?v=1.0" />
+</head>
+
+<body>
+<div class="allpage">
+  <div class="Backgruoung-Img-div">
+  <img class="Backgruoung-Img" src="{% static 'assets/images/gg.jpg' %}">
+  </div>
+</div>
+
+    <nav class="navbar navbar-light" >
+        <span class="navbar-text">
+          <ul>
+            <li><a>삶_담소</a></li>
+            <li><a>
+                <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalScrollable_1" value="로그인 하기">
+                    <h3 id="login_nav">로그인하기</h3>
+                  </button>
+            </a></li>
+            <li><a>
+                <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalLong">
+                    <h3 id="login_nav">가입 하기</h3>
+                  </button>
+            </a></li>
+          </ul>
+        </span>
+      </nav>
+
+
+  
+  <!-- 로그인 -->
+  <div class="modal_back">
+
+  <div class="modal fade" id="exampleModalScrollable_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle">로그인 하기</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form method = "POST" action="{%url 'login'%}">
+            {% csrf_token %}
+        <div class="modal-body">
+          <p>ID_이름</p>
+          <u><input name="username" type="text" required class="login_input"><hr></u><br>
+          <p>PW_비밀번호</p>
+          <u><input name="password" type="password" required class="login_input"></u><br>
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-secondary">로그인</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button> 
+          </form>
+          </div>
+         
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 회원가입  -->
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">회원 가입</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method = "POST" action="{%url 'signup' %}">
+            {% csrf_token %}
+          <div class="modal-body">
+            <div class="contaner">
+              <div class="required">
+                  <h3>필수 영역 입니다</h3>               
+                            <p>아이디</p> 
+                            <input placeholder="" name="username" type="text" required>
+                            <hr>
+                            <p>비밀번호</p> 
+                            <input placeholder=""  name="password1" type="password" required id="pw_1">
+                            <br>
+                            <p>비밀번호 확인</p> 
+                            <input placeholder=""  name="password2" type="password" required id="pw_2">
+              </div>
+              <div class="unrequired"><hr>
+                  <h3>선택 영역 입니다</h3>
+                  <p>이메일</p> 
+                  <input name="email" type="text" value="">
+              </div>
+
+            
+              </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">돌아가기</button>
+          <button type="submit" class="btn btn-secondary" onclick="check_pw()">가입 완료</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+
+<script>
+var pw_1 = document.getElementById("pw_1");
+var pw_2 = document.getElementById("pw_2");
+
+function check_pw(){
+  if ( pw_1 != pw_2){
+    alert("입력하신 두 비밀번호가 상이합니다.");
+  } else{
+  }
+}
+
+</script>
+
+</html>

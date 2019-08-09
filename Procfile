@@ -1,0 +1,1 @@
+web: gunicorn hackertone.wsgi --log-file -

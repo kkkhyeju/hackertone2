@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|East+Sea+Dokdo|Gugi|Nanum+Pen+Script|Song+Myung&display=swap&subset=korean');
+@import url('https://fonts.googleapis.com/css?family=Anton|Nanum+Myeongjo&display=swap&subset=korean');
+
+@font-face {
+font-family: Poppins-Regular;
+src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+font-family: Poppins-Medium;
+src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+font-family: Poppins-Bold;
+src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+font-family: Poppins-SemiBold;
+src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
+}
+
+.contact100-form-title {
+display: block;
+font-family: 'Anton', sans-serif;
+font-size: 39px;
+color: #333333;
+line-height: 1.2;
+text-align: center;
+padding-bottom: 44px;
+}
+.container-contact100 {
+width: 100%;  
+min-height: 100vh;
+display: -webkit-box;
+display: -webkit-flex;
+display: -moz-box;
+display: -ms-flexbox;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+padding: 15px;
+background:url("../images/makeateam.png");
+background-size: cover;
+background-attachment: fixed, fixed;
+background-repeat: repeat, no-repeat;
+
+}
+.wrap-contact100 {
+width: 600px;
+background: #fff;
+border-radius: 10px;
+overflow: hidden;
+padding: 42px 55px 45px 55px;
+
+}
+.wrap-input100 {
+width: 100%;
+position: relative;
+border-bottom: 2px solid #d9d9d9;
+padding-bottom: 13px;
+margin-bottom: 27px;
+font-family: 'Anton', sans-serif;
+}
+.validate-input {
+position: relative;
+}
+.input100 {
+display: block;
+width: 100%;
+background: transparent;
+font-size: 18px;
+color: #333333;
+line-height: 1.2;
+padding: 0 5px;
+}
+.question{
+width: 100%;
+position: relative;
+padding-bottom: 13px;
+margin-bottom: 27px;
+font-family: 'Nanum Myeongjo', serif;
+line-height: 2;
+}
+.btn{
+background-color:#800080; 
+border:#800080;
+font-family: 'Nanum Myeongjo', serif;
+}
